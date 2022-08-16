@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
+import "./App.css";
 
 import { Navbar, Footer, Sidebar, ThemeSettings } from "./components";
 import {
