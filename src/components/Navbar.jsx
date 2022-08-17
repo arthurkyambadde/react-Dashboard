@@ -10,8 +10,33 @@ import { Cart, Chat, Notification, UserProfile } from ".";
 import { useStateContext } from "../contexts/ContextProvider";
 
 function NavBar() {
-  const { handleClick, activeMenu, setActiveMenu, isClicked } =
-    useStateContext();
+  const {
+    handleClick,
+    activeMenu,
+    setActiveMenu,
+    isClicked,
+    screenSize,
+    setScreenSize,
+  } = useStateContext();
+
+  useEffect(() => {
+    const handleResize = () => setScreenSize(window.innerWidth);
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    console.log(screenSize);
+    if (screenSize <= 900) {
+      setActiveMenu(false);
+    } else {
+      setActiveMenu(true);
+    }
+  }, [screenSize]);
 
   const NavButton = ({ title, customFunc, icon, color, dotColor }) => {
     return (
