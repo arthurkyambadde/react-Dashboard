@@ -1,7 +1,14 @@
 import React from "react";
 
-function Button() {
-  return <div>Button</div>;
+function Button({ bgColor, color, size, text, borderRadius }) {
+  return (
+    <button
+      style={{ backgroundColor: bgColor, color, borderRadius }}
+      className={`text-${size} p-3 hover:drop-shadow-xl `}
+    >
+      {text}
+    </button>
+  );
 }
 
 export default Button;
